@@ -23,7 +23,7 @@ export function MyPosts() {
         {id: 2, message: 'It,s my first post', likesCount: 26},
     ]
 
-    let postsElements = posts.map(p => <MyPostsItem messages={p.message} likesCount={p.likesCount}/>)
+    let postsElements = posts.map(p => <MyPostsItem  messages={p.message} likesCount={p.likesCount}/>)
 
     return (
         <div className={classes.postsBlock}>
