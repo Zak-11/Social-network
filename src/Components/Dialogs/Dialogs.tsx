@@ -1,27 +1,26 @@
 import React from 'react';
 import classes from './Dialogs.module.css'
 import {DialogItem} from "../Dialogitem.tsx/Dialogitem";
-import {MessageItem} from "../Messages/Messages";
+import {Messages} from "../Messages/Messages";
+import {DialogType, MessageType} from "../../Redax/state";
 
 
-export function Dialogs() {
-    let dialogs = [
-        {id: 1, name: "Diana"},
-        {id: 2, name: "Kristina"},
-        {id: 3, name: "Mikal"},
-        {id: 4, name: "Ilia"},
 
-    ]
 
-    let messages = [
-        {id: 1, message: "Hi!"},
-        {id: 2, message: "How is your it?"},
-        {id: 3, message: "Yo."},
-        {id: 4, message: "Yo."},
 
-    ]
-    let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = messages.map(m => <MessageItem message={m.message}/>)
+
+export type DialogTypeProps = {
+    dialogs: DialogType[]
+    messages: MessageType[]
+
+}
+
+
+
+export function Dialogs (props:DialogTypeProps) {
+
+    let dialogsElements = props.dialogs.map (d => <DialogItem name={d.name} id={d.id} />)
+    let messagesElements =props.messages.map (m => <Messages messages={m.message}/>)
 
     return (
         <div className={classes.dialogs}>

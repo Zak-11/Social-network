@@ -1,18 +1,22 @@
 import React from 'react';
 import classes from './../Dialogs/Dialogs.module.css'
+import {MessageType} from "../../Redax/state";
 
 
 
 
-type MessageItemProps = {
-    message: string
+
+
+export type DialogPagProps = {
+
+    messages: string
 
 }
 
 
+export function Messages(props: DialogPagProps) {
 
-export const MessageItem = (props: MessageItemProps) => {
-    return <div className={classes.message}>{props.message}</div>
+    return <div className={classes.dialog}>{props.messages}</div>
 
 }
 
