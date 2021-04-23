@@ -8,18 +8,19 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./Components/News/News"
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settinds/Settings";
-import {RootStateType, state} from "./Redax/state";
-
+import {addPost, RootStateType, state} from "./Redax/state";
 
 
 
 type PropsType = {
     state: RootStateType
+
 }
 function App(props: PropsType) {
-    let  dialogs = state.dialogsPage.dialogs
+    let dialogs = state.dialogsPage.dialogs
     let messages = state.dialogsPage.messages
     let posts = state.profilePage.posts
+
 
     return (
         <BrowserRouter>
@@ -27,8 +28,9 @@ function App(props: PropsType) {
                 <Header/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
-                    <Route path={'/dialogs'} render={() => <Dialogs dialogs={dialogs} messages={messages} />}/>
-                    <Route path={'/profile'} render={() => <Profile posts={posts} />}/>
+                    <Route path={'/dialogs'} render={() => <Dialogs dialogs={dialogs} messages={messages}/>}/>
+                    <Route path={'/profile'} render={() => <Profile posts={posts}
+                                                                    addPost={addPost} />}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>

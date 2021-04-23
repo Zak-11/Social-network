@@ -14,6 +14,9 @@ export type PostType = {
     id: number
     message: string
     likesCount: number
+
+
+
 }
 export type ProfilePageType = {
     posts: Array<PostType>
@@ -26,12 +29,13 @@ export type DialogPageType = {
 
 }
 
- export type  SidebarType = {}
+export type  SidebarType = {}
 
 export type RootStateType = {
     profilePage:ProfilePageType
     dialogsPage: DialogPageType
     sidebar:SidebarType
+
 }
 export let state:RootStateType = {
     profilePage: {
@@ -62,3 +66,16 @@ export let state:RootStateType = {
     sidebar: {}
 }
 
+
+
+
+export const addPost = (postMessage:string) => {
+    const newPost : PostType = {
+        id: new Date().getTime(),
+        message: postMessage,
+        likesCount: 0,
+
+    }
+
+    state.profilePage.posts.push(newPost)
+}

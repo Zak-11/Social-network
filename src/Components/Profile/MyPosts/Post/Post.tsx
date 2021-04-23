@@ -7,6 +7,7 @@ import classes from './Post.module.css'
 export type PostTypeProps = {
     message: string
     likesCount: number
+
 }
 
 
