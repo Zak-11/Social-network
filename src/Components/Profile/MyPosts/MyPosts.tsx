@@ -14,7 +14,7 @@ export type ProfilePageProps = {
 
 export function MyPosts(props: ProfilePageProps) {
     let postsElements =
-        props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+        props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
@@ -22,7 +22,8 @@ export function MyPosts(props: ProfilePageProps) {
 
     const addPost = () => {
         if (newPostElement.current) {
-            props.addPost(newPostElement.current .value)
+            props.addPost(newPostElement.current .value);
+            newPostElement.current.value = '';
         }
     }
 
