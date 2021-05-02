@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './../Dialogs/Dialogs.module.css'
-import {MessageType} from "../../Redax/state";
+
 
 
 
@@ -17,7 +17,17 @@ export type DialogPagProps = {
 
 export function Messages(props: DialogPagProps) {
 
-    return <div className={classes.dialog}>{props.messages}</div>
+    return <div className={classes.dialog}>{props.messages}
+
+
+        <div>
+            <textarea />
+        </div>
+        <div>
+            <button>Add message</button>
+        </div>
+
+    </div>
 
 }
 

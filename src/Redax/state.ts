@@ -36,7 +36,7 @@ export type ProfilePageType = {
 export type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-
+    newMessageText: string
 }
 
 export type  SidebarType = {}
@@ -59,6 +59,7 @@ export let state: RootStateType = {
     },
 
     dialogsPage: {
+        newMessageText: "",
         dialogs: [
             {id: 1, name: "Diana"},
             {id: 2, name: "Kristina"},
@@ -98,6 +99,8 @@ export const updateNewPostText = (newText: string) => {
 
     rerenderEntireTree(state)
 }
+
+
 
 
 
