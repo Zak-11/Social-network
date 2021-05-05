@@ -1,24 +1,27 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {RootStateType, subscribe} from "./Redax/state";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import {state} from './Redax/state'
+import {store} from './Redax/state'
 
-const rerenderEntireTree = (state: RootStateType) => {
+
+const _callSubscriber = () => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state}/>,
+            <App store={store}/>,
         </BrowserRouter>,
         document.getElementById('root')
     );
 
 }
-rerenderEntireTree(state)
-subscribe(rerenderEntireTree);
+
+store.subscribe(_callSubscriber);
+_callSubscriber()
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

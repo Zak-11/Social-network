@@ -8,15 +8,15 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./Components/News/News"
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settinds/Settings";
-import {addPost, RootStateType, state, updateNewPostText} from "./Redax/state";
+import { StoreType} from "./Redax/state";
 
 
 type PropsType = {
-    state: RootStateType
-
+    store: StoreType
 }
 
-function App(props: PropsType) {
+const App: React.FC<PropsType> =(props)=> {
+    const state = props.store.getState()
     let dialogs = state.dialogsPage.dialogs
     let messages = state.dialogsPage.messages
     let posts = state.profilePage.posts
@@ -32,8 +32,8 @@ function App(props: PropsType) {
                     <Route path={'/dialogs'} render={() => <Dialogs dialogs={dialogs} messages={messages}/>}/>
                     <Route path={'/profile'} render={() => <Profile posts={posts}
                                                                     newPostText={newPostTexts}
-                                                                    updateNewPostText={updateNewPostText}
-                                                                    addPost={addPost}/>}/>
+                                                                    updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                                                                    addPost={props.store.addPost.bind(props.store)}/>}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>
