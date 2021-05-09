@@ -1,14 +1,14 @@
 import React from 'react';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./MyPosts/ProfileInfo/ProfileInfo";
-import {PostType} from "../../Redax/state";
+import {ActionsTypes, PostType} from "../../Redax/state";
 
 
 export type ProfilePageProps = {
     posts: Array<PostType>,
-    addPost: (postMessage: string) => void,
     newPostText: string,
-    updateNewPostText: (newText: string) => void
+    dispatch: (action: ActionsTypes) => void
+
 }
 
 export function Profile(props: ProfilePageProps) {
@@ -17,8 +17,9 @@ export function Profile(props: ProfilePageProps) {
             <ProfileInfo/>
             <MyPosts posts={props.posts}
                      newPostText={props.newPostText}
-                     updateNewPostText={props.updateNewPostText}
-                     addPost={props.addPost}/>
+                     dispatch={props.dispatch}
+
+             />
 
         </div>
 

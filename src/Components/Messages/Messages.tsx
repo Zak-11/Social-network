@@ -20,12 +20,6 @@ export function Messages(props: DialogPagProps) {
     return <div className={classes.dialog}>{props.messages}
 
 
-        <div>
-            <textarea />
-        </div>
-        <div>
-            <button>Add message</button>
-        </div>
 
     </div>
 

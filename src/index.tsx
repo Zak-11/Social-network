@@ -11,7 +11,7 @@ const _callSubscriber = () => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App store={store}/>,
+            <App store={store }/>,
         </BrowserRouter>,
         document.getElementById('root')
     );
@@ -20,7 +20,6 @@ const _callSubscriber = () => {
 
 store.subscribe(_callSubscriber);
 _callSubscriber()
-
 
 
 // If you want to start measuring performance in your app, pass a function
