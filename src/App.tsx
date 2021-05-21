@@ -8,7 +8,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./Components/News/News"
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settinds/Settings";
-import { StoreType} from "./Redax/state";
+import {StoreType} from "./Redax/state";
 
 
 type PropsType = {
@@ -22,7 +22,8 @@ const App: React.FC<PropsType> =(props)=> {
     let messages = state.dialogsPage.messages
     let posts = state.profilePage.posts
     let newPostTexts = state.profilePage.newPostText
-    let newMessageText = state.dialogsPage.newMessageText
+    let newMessageBody = state.dialogsPage.newMessageBody
+
 
     return (
         <BrowserRouter>
@@ -31,14 +32,14 @@ const App: React.FC<PropsType> =(props)=> {
                 <NavBar/>
                 <div className='app-wrapper-content'>
                     <Route path={'/dialogs'} render={() => <Dialogs dialogs={dialogs} messages={messages}
-                                                                    newMessageText={newMessageText}
-                                                                    dispatch ={props.store.dispatch.bind(props.store)}/>}/>
+                                                                    newMessageBody={ newMessageBody}
+                                                                    dispatch ={props.store.dispatch.bind(props.store)} />}/>
 
 
                     <Route path={'/profile'} render={() => <Profile posts={posts}
                                                                     newPostText={newPostTexts}
                                                                     dispatch ={props.store.dispatch.bind(props.store)}/>}/>
-                    <Route path={'/news'} render={() => <News/>}/>
+                   <Route path={'/news'} render={() => <News />}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>
 
