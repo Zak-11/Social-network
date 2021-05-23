@@ -1,7 +1,7 @@
 import React from 'react';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./MyPosts/ProfileInfo/ProfileInfo";
-import {ActionsTypes, PostType} from "../../Redax/state";
+import {ActionsTypes, PostType} from "../../Redax/store";
 
 
 export type ProfilePageProps = {

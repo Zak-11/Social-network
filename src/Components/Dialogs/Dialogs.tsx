@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import {DialogItem} from "../Dialogitem.tsx/Dialogitem";
 import {Messages} from "../Messages/Messages";
-import {ActionsTypes, DialogType,MessageType,} from "../../Redax/state";
+import {ActionsTypes, DialogType,MessageType,} from "../../Redax/store";
 import {sendMessageAC, updateNewMessageBodyAC} from "../../Redax/dialogs-reduser";
 
 

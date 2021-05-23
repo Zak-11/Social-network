@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import classes from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes,PostType,} from "../../../Redax/state";
+import {ActionsTypes,PostType,} from "../../../Redax/store";
 import {addPostAC, updateNewPostTextAC} from "../../../Redax/profile-reduser";
 
 

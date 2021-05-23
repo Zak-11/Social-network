@@ -97,7 +97,6 @@ export const store: StoreType = {
                 {id: 2, message: 'It,s my first post', likesCount: 26},
             ],
         },
-
         dialogsPage: {
             newMessageText: "",
             dialogs: [
