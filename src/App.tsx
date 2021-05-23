@@ -12,6 +12,7 @@ import {StoreType} from "./Redax/store";
 
 
 
+
 type PropsType = {
     store: StoreType
 
