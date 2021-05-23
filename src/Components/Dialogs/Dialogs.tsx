@@ -46,7 +46,7 @@ export function Dialogs(props: DialogTypeProps) {
                     <div><textarea value={props.newMessageBody}
                                    onChange={onNewMessageChange}
                                    placeholder='Enter your message'> </textarea></div>
-                    <div><button onClick={onSndMessageClick}>SEND</button></div>
+                    <div><button   onClick={onSndMessageClick}>SEND</button></div>
 
                 </div>
             </div>

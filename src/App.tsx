@@ -39,8 +39,8 @@ const App: React.FC<PropsType> =(props)=> {
                     <Route path={'/profile'} render={() => <Profile posts={posts}
                                                                     newPostText={newPostTexts}
                                                                     dispatch ={props.store.dispatch.bind(props.store)}/>}/>
-                   <Route path={'/news'} render={() => <News />}/>
-                    <Route path={'/music'} render={() => <Music/>}/>
+                   <Route path={'/news'} render={() => <News/>}/>
+                    <Route path={'/music'} render={() => <Music />}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>
 
 

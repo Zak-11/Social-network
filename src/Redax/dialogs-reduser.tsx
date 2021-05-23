@@ -6,8 +6,8 @@ export const dialogsReducer = (state: DialogPageType, action: ActionsTypes)=> {
          state.newMessageBody = action.body
          return state
      case "SEND-MESSAGE":
-         let body = state.newMessageBody;
          state.newMessageBody = ''
+         let body = state.newMessageBody;
          state.messages.push({id: 5, message: body})
          return state
      default:
