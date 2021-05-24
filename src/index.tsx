@@ -4,22 +4,25 @@ import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import {store} from './Redax/redux-store'
+import {RootStateType, store} from './Redax/store'
 
 
-const _callSubscriber = () => {
+const _callSubscriber = (state: RootStateType) => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App store={store}/>,
+            <App store={store} />,
         </BrowserRouter>,
         document.getElementById('root')
     );
 
 }
+_callSubscriber(store.getState())
+store.subscribe(()=> {
+    let state = store.getState()
+    _callSubscriber(state)
+});
 
-store.subscribe(_callSubscriber);
-_callSubscriber()
 
 
 // If you want to start measuring performance in your app, pass a function

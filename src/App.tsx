@@ -8,13 +8,14 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./Components/News/News"
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settinds/Settings";
-import {StoreType} from "./Redax/store";
+import { StoreType} from "./Redax/store";
 
 
 
 
 type PropsType = {
     store: StoreType
+
 
 }
 
