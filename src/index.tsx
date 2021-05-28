@@ -4,7 +4,8 @@ import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import {RootStateType, store} from './Redax/store'
+import {RootStateType,} from './Redax/store'
+import {store} from "./Redax/redux-store";
 
 
 const _callSubscriber = (state: RootStateType) => {

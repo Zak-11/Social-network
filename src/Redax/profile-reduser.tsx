@@ -7,6 +7,21 @@ let initialState = {
         {id: 2, message: 'It,s my first post', likesCount: 26},
     ],
 }
+type addPostActionType = {
+    type: 'ADD-POST',
+}
+
+type updateNewPostTextActionType = {
+
+    type: 'UPDATE-NEW-POST-TEXT',
+    newText : string
+}
+
+export type ProfileReducerActionsType =
+    addPostActionType | updateNewPostTextActionType
+
+
+
 export const profileReducer = (state = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case "ADD-POST":
@@ -28,13 +43,13 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
     }
 
 }
-export const addPostAC = (postMessage: string) => {
+export const addPostAC = ():addPostActionType  => {
     return {
         type: 'ADD-POST',
-        postMessage: postMessage
+
     } as const
 }
-export const updateNewPostTextAC = (newText: string) => {
+export const updateNewPostTextAC = (newText: string):updateNewPostTextActionType => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
         newText: newText

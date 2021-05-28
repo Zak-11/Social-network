@@ -1,6 +1,6 @@
-import {profileReducer} from "./profile-reduser";
+import {profileReducer, ProfileReducerActionsType} from "./profile-reduser";
 import {sidebarReducer} from "./sidebar-reduser";
-import {dialogsReducer} from "./dialogs-reduser";
+import {dialogsReducer, DialogsReducerActionsType} from "./dialogs-reduser";
 
 export type MessageType = {
     id: number
@@ -31,11 +31,8 @@ export type DialogPageType = {
     newMessageBody: string;
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    newMessageText: string
 }
-
 export type  SidebarType = {}
-
 export type RootStateType = {
 
 
@@ -55,16 +52,14 @@ export type StoreType = {
 }
 
 export type ActionsTypes =
-    ReturnType<typeof addPostAC>
-    | ReturnType<typeof updateNewPostTextAC>
-    | ReturnType<typeof newMessageBodyAC>
-    | ReturnType<typeof newMessageSendAC>
+    DialogsReducerActionsType|ProfileReducerActionsType
 
 
-export const addPostAC = (postMessage: string) => {
+
+export const addPostAC = () => {
     return {
         type: 'ADD-POST',
-        postMessage: postMessage
+
     } as const
 }
 
@@ -81,10 +76,9 @@ export const newMessageBodyAC = (body: string) => {
     } as const
 }
 
-export const newMessageSendAC = (body: string) => {
+export const newMessageSendAC = () => {
     return {
         type: 'SEND-MESSAGE',
-        body: body
     } as const
 }
 
@@ -98,7 +92,6 @@ export const store: StoreType = {
             ],
         },
         dialogsPage: {
-            newMessageText: "",
             dialogs: [
                 {id: 1, name: "Diana"},
                 {id: 2, name: "Kristina"},
@@ -115,9 +108,7 @@ export const store: StoreType = {
             ],
             newMessageBody: ""
         },
-        sidebar: {
-
-        }
+        sidebar: {}
     },
     _callSubscriber() {
         console.log("Hello")
@@ -130,10 +121,9 @@ export const store: StoreType = {
         return this._state
     },
     dispatch(action) {
-
-        this._state.profilePage =  profileReducer(this._state.profilePage, action)
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        this._state.sidebar =  sidebarReducer (this._state.sidebar, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
         this._callSubscriber()
     }
 
