@@ -33,28 +33,33 @@ export type DialogsReducerActionsType =
     SendMessageActionType | UpdateNewPostTextActionType
 
 
-
 export const dialogsReducer = (state = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case "UPDATE-NEW-MESSAGE-BODY":
-            state.newMessageBody = action.body
-            return state
+            return {
+                ...state,
+                newMessageBody: action.body
+            }
+
+
         case "SEND-MESSAGE":
-            state.messages.push({id: 5, message: state.newMessageBody})
-            state.newMessageBody = ''
-            return state
+            return {
+                ...state,
+                newMessageBody: " ",
+                messages: [...state.messages, {id: 5, message: state.newMessageBody}]
+            }
         default:
             return state
 
     }
 }
 
-export const sendMessageAC = ():SendMessageActionType => {
+export const sendMessageAC = (): SendMessageActionType => {
     return {
         type: 'SEND-MESSAGE',
     } as const
 }
-export const updateNewMessageBodyAC = (body: string):UpdateNewPostTextActionType => {
+export const updateNewMessageBodyAC = (body: string): UpdateNewPostTextActionType => {
     return {
         type: 'UPDATE-NEW-MESSAGE-BODY',
         body: body
