@@ -1,6 +1,7 @@
-import {profileReducer, ProfileReducerActionsType} from "./profile-reduser";
+import {profileReducer, ProfileReducerActionsType} from "./profile-reducer";
 import {sidebarReducer} from "./sidebar-reduser";
 import {dialogsReducer, DialogsReducerActionsType} from "./dialogs-reduser";
+import {UsersReducerActionsType} from "./users-reduser";
 
 export type MessageType = {
     id: number
@@ -32,6 +33,8 @@ export type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
+
+
 export type  SidebarType = {}
 export type RootStateType = {
 
@@ -52,7 +55,7 @@ export type StoreType = {
 }
 
 export type ActionsTypes =
-    DialogsReducerActionsType|ProfileReducerActionsType
+    DialogsReducerActionsType | ProfileReducerActionsType | UsersReducerActionsType
 
 
 
