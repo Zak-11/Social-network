@@ -3,14 +3,12 @@ import classes from './Dialogs.module.css'
 import {DialogItem} from "../Dialogitem/Dialogitem";
 import {Messages} from "../Messages/Messages";
 import { DialogType, MessageType} from "../../Redax/store";
-import {DialogsReducerActionsType} from "../../Redax/dialogs-reduser";
 
 
 export type DialogTypeProps = {
     newMessageBody: string;
     dialogs: DialogType[]
     messages: MessageType[]
-    dispatch: (action: DialogsReducerActionsType) => void
     updateNewPostText: (body: string) => void;
     sendMessage: () => void
 }

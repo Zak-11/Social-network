@@ -1,13 +1,12 @@
 import React, {ChangeEvent} from 'react';
 import classes from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, PostType,} from "../../../Redax/store";
+import { PostType} from "../../../Redax/store";
 
 
 export type ProfilePageProps = {
     posts: PostType[]
     newPostText: string,
-    dispatch: (action: ActionsTypes) => void
     updateNewPostText: (value: string) => void;
     addPost: () => void
 

@@ -1,7 +1,7 @@
 import {ActionsTypes} from "./store";
 
 
-let initialState = {
+export let initialState = {
     dialogs: [
         {id: 1, name: "Diana"},
         {id: 2, name: "Kristina"},
@@ -20,10 +20,10 @@ let initialState = {
 
 
 }
-type SendMessageActionType = {
+export type SendMessageActionType = {
     type: 'SEND-MESSAGE'
 }
-type UpdateNewPostTextActionType = {
+export type UpdateNewPostTextActionType = {
 
     type: 'UPDATE-NEW-MESSAGE-BODY'
     body: string

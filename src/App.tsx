@@ -8,23 +8,14 @@ import {News} from "./Components/News/News"
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settinds/Settings";
 import {DialogsContainer} from "./Components/Dialogs/DialogsContaner";
-import {AppStoreType} from "./Redax/redux-store"
 
 
 
-type PropsType = {
-    store: AppStoreType
 
-}
+
+type PropsType = {}
 
 const App: React.FC<PropsType> =(props)=> {
-    const state = props.store.getState()
-    let dialogs = state.dialogsPage.dialogs
-    let messages = state.dialogsPage.messages
-    let posts = state.profilePage.posts
-    let newPostTexts = state.profilePage.newPostText
-    let newMessageBody = state.dialogsPage.newMessageBody
-
 
     return (
         <BrowserRouter>
@@ -32,18 +23,10 @@ const App: React.FC<PropsType> =(props)=> {
                 <Header/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
-                    <Route path={'/dialogs'} render={() => <DialogsContainer store = {props.store}
-                                                                             dialogs={dialogs}
-                                                                             dispatch={props.store.dispatch.bind(props.store)}
-                                                                             messages ={messages}
-                                                                             newMessageBody = {newMessageBody}
-                                                                              />}/>
+                    <Route path={'/dialogs'} render={() => <DialogsContainer />}/>
 
 
-                    <Route path={'/profile'} render={() => <Profile store={props.store}
-                                                                    posts={posts}
-                                                                    newPostText={newPostTexts}
-                                                                    dispatch={props.store.dispatch.bind(props.store)}/>}/>
+                    <Route path={'/profile'} render={() => <Profile />}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>

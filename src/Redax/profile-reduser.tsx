@@ -1,17 +1,17 @@
 import {ActionsTypes, PostType} from "./store";
 
-let initialState = {
+export let initialState = {
     newPostText: "",
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 2},
         {id: 2, message: 'It,s my first post', likesCount: 26},
     ],
 }
-type addPostActionType = {
+export type addPostActionType = {
     type: 'ADD-POST',
 }
 
-type updateNewPostTextActionType = {
+export type updateNewPostTextActionType = {
 
     type: 'UPDATE-NEW-POST-TEXT',
     newText : string
