@@ -14,42 +14,47 @@ export type addPostActionType = {
 export type updateNewPostTextActionType = {
 
     type: 'UPDATE-NEW-POST-TEXT',
-    newText : string
+    newText: string
 }
 
 export type ProfileReducerActionsType =
     addPostActionType | updateNewPostTextActionType
 
 
-
 export const profileReducer = (state = initialState, action: ActionsTypes) => {
     switch (action.type) {
-        case "ADD-POST":
+        case "ADD-POST": {
             const newPost: PostType = {
                 id: new Date().getTime(),
                 message: state.newPostText,
                 likesCount: 0,
-
             }
 
-            state.posts.push(newPost)
-            state.newPostText = ' '
-            return state
-        case "UPDATE-NEW-POST-TEXT":
-            state.newPostText = action.newText
-            return state
+            let statCopy = {...state}
+            statCopy.posts = [...state.posts]
+            statCopy.posts.push(newPost)
+            statCopy.newPostText = " "
+            return statCopy
+        }
+
+        case "UPDATE-NEW-POST-TEXT": {
+            let stateCopy = {...state}
+            stateCopy.newPostText = action.newText
+            return stateCopy
+        }
+
         default:
             return state
     }
 
 }
-export const addPostAC = ():addPostActionType  => {
+export const addPostAC = (): addPostActionType => {
     return {
         type: 'ADD-POST',
 
     } as const
 }
-export const updateNewPostTextAC = (newText: string):updateNewPostTextActionType => {
+export const updateNewPostTextAC = (newText: string): updateNewPostTextActionType => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
         newText: newText
