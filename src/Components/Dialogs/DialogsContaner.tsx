@@ -1,17 +1,9 @@
 import React from 'react';
-import {DialogType, MessageType} from "../../Redax/store";
-import {DialogsReducerActionsType, sendMessageAC, updateNewMessageBodyAC} from "../../Redax/dialogs-reduser";
+import { sendMessageAC, updateNewMessageBodyAC} from "../../Redax/dialogs-reduser";
 import {Dialogs} from "./Dialogs";
 import {AppStateType} from "../../Redax/redux-store";
 import {connect} from "react-redux";
 import {Dispatch} from 'redux';
-
-export type DialogTypeProps = {
-    dialogs: DialogType[]
-    messages: MessageType[]
-    dispatch: (action: DialogsReducerActionsType) => void
-    newMessageBody: string
-}
 
 
 

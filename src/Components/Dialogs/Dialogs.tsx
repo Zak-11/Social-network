@@ -2,9 +2,20 @@ import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import {DialogItem} from "../Dialogitem/Dialogitem";
 import {Messages} from "../Messages/Messages";
-import { DialogType, MessageType} from "../../Redax/store";
 
 
+export type DialogType = {
+    id: number
+    name: string
+
+}
+
+
+export type MessageType = {
+    id: number
+    message: string
+
+}
 export type DialogTypeProps = {
     newMessageBody: string;
     dialogs: DialogType[]

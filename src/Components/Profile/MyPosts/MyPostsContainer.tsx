@@ -6,7 +6,6 @@ import {Dispatch} from "redux";
 import {AppStateType} from "../../../Redax/redux-store";
 
 
-
 let mapStateToProps = (state: AppStateType) => {
     return {
         posts: state.profilePage.posts,

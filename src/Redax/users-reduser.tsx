@@ -1,49 +1,46 @@
-import {ActionsTypes} from "./store";
-
-
-export let initialState = {
-
-    users: [
-        {
-            id: 1,
-            followed: false,
-            fullName: 'Diana',
-            status: 'I am a boss',
-            location: {city: 'Moscow', country: 'Russia'}
-        },
-        {
-            id: 2,
-            followed: true,
-            fullName: 'Kristina',
-            status: 'I am a boss',
-            location: {city: 'Moscow', country: 'Peru'}
-        },
-        {
-            id: 3,
-            followed: false,
-            fullName: 'Mile',
-            status: 'I am a boss',
-            location: {city: 'Moscow', country: 'Canada'}
-        },
-        {id: 4, followed: true, fullName: 'Chili', status: 'I am a boss', location: {city: 'Moscow', country: 'USA'}},
-
-    ],
+export type UserType = {
+    photos: string;
+    id: number
+    followed: boolean
+    fullName: string
+    status: string
+    location: UserLocation
 }
+
+export type UserLocation = {
+    city: string,
+    country: string
+}
+export type InitialStateUsersType = {
+    users: Array<UserType>
+
+}
+const initialState: InitialStateUsersType = {
+
+    users: [],
+}
+
+
 export type followActionType = {
     type: 'FOLLOW',
     userID: number
+
 }
 
 export type unfollowActionType = {
     type: 'UNFOLLOW',
     userID: number
 }
+export type setActionType = {
+    type: 'SET_USERS',
+    users: Array<UserType>
 
+}
 export type UsersReducerActionsType =
-    followActionType | unfollowActionType
+    followActionType | unfollowActionType | setActionType
 
 
-export const usersReducer = (state = initialState, action: ActionsTypes) => {
+export const usersReducer = (state: InitialStateUsersType = initialState, action: UsersReducerActionsType): InitialStateUsersType => {
     switch (action.type) {
         case "FOLLOW":
             return {
@@ -67,8 +64,10 @@ export const usersReducer = (state = initialState, action: ActionsTypes) => {
                     }
                 )
             }
+        case "SET_USERS": {
 
-
+            return {...state, users: [...state.users, ...action.users]}
+        }
 
         default:
             return state
@@ -87,3 +86,11 @@ export const unfollowAC = (userID: number): unfollowActionType => {
         userID: userID
     } as const
 }
+
+export const setUsersAC = (users: Array<UserType>): setActionType => {
+    return {
+        type: 'SET_USERS',
+        users: users
+    } as const
+}
+

@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import {store} from "./Redax/redux-store";
+
 
 
 test('renders learn react link', () => {
 
 
-  render(  <App store={store }/>,);
+  render(  <App />,);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
