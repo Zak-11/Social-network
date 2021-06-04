@@ -8,7 +8,7 @@ import {Dispatch} from 'redux';
 
 
 let mapStateToProps = (state: AppStateType) => {
-    console.log(state)
+
     return {
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,

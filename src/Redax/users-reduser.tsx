@@ -16,12 +16,16 @@ export type InitialStateUsersType = {
     pageSize: number,
     totalUsersCount: number,
     currentPage: number
+
+
 }
 const initialState: InitialStateUsersType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 2
+    currentPage: 1,
+
+
 }
 
 
@@ -47,13 +51,17 @@ export type setCurrentType = {
 
 }
 
-export type setTotalCount ={
+export type setTotalCountType = {
     type: 'SET_TOTAL_USERS_COUNT'
     totalUsersCount: number
 }
 
+export type onPageChangedType = {
+    type: 'ON_PAGE_CHANGED',
+    p: number
+}
 export type UsersReducerActionsType =
-    followActionType | unfollowActionType | setActionType | setCurrentType | setTotalCount
+    followActionType | unfollowActionType | setActionType | setCurrentType | setTotalCountType | onPageChangedType
 
 
 export const usersReducer = (state: InitialStateUsersType = initialState, action: UsersReducerActionsType): InitialStateUsersType => {
@@ -93,6 +101,10 @@ export const usersReducer = (state: InitialStateUsersType = initialState, action
             return {...state, totalUsersCount: action.totalUsersCount}
         }
 
+        case 'ON_PAGE_CHANGED' : {
+            debugger
+            return {...state, currentPage: action.p}
+        }
         default:
             return state
     }
@@ -110,7 +122,6 @@ export const unfollowAC = (userID: number): unfollowActionType => {
         userID: userID
     } as const
 }
-
 export const setUsersAC = (users: Array<UserType>): setActionType => {
     return {
         type: 'SET_USERS',
@@ -118,17 +129,22 @@ export const setUsersAC = (users: Array<UserType>): setActionType => {
     } as const
 
 }
-
-export const setCurrentPageAC = ( currentPage: number):  setCurrentType  => {
-    return{
+export const setCurrentPageAC = (currentPage: number): setCurrentType => {
+    return {
         type: 'SET_CURRENT',
         currentPage: currentPage
     }
 
 }
-export const  setTotalUsersCount =(totalUsersCount: number ): setTotalCount => {
+export const setTotalUsersCountAC = (totalUsersCount: number): setTotalCountType => {
     return {
         type: 'SET_TOTAL_USERS_COUNT',
-        totalUsersCount:totalUsersCount
+        totalUsersCount: totalUsersCount
+    }
+}
+export const onPageChangedAC = (p: number): onPageChangedType => {
+    return {
+        type: 'ON_PAGE_CHANGED',
+        p: p
     }
 }
