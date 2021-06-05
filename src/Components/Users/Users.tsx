@@ -1,6 +1,5 @@
 import React from "react";
 import styles from './users.module.css';
-
 import {UsersPropsType} from "./UsersContainer";
 import userPhoto from "../../ass/images/Clip.png"
 
@@ -16,14 +15,15 @@ export let Users = (props: UsersPropsType) => {
     }
 
 
-
     return <div>
 
         <div>
             {pages.map(p => {
 
                 return <span className={`${props.usersPage.currentPage === p && styles.selectedPage}`}
-                             onClick={ () => {props.onPageChanged(p)}}>{p}</span>
+                             onClick={() => {
+                                 props.onPageChange(p)
+                             }}>{p}</span>
             })}
 
         </div>
@@ -33,7 +33,9 @@ export let Users = (props: UsersPropsType) => {
 
             <span>
            <div>
-               <img src={`${u.photos.small != null ? u.photos.small : userPhoto}`} className={styles.userPhoto}/>
+
+               <img src={`${u.photos.small != null ? u.photos.small : userPhoto}`}
+                    className={styles.userPhoto}/>
 
 
            </div>
