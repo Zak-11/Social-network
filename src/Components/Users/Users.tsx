@@ -2,6 +2,7 @@ import React from "react";
 import styles from './users.module.css';
 import {UsersPropsType} from "./UsersContainer";
 import userPhoto from "../../ass/images/Clip.png"
+import {NavLink} from "react-router-dom";
 
 
 export let Users = (props: UsersPropsType) => {
@@ -33,10 +34,10 @@ export let Users = (props: UsersPropsType) => {
 
             <span>
            <div>
-
+         <NavLink to={'/profile'} key={u.id}>
                <img src={`${u.photos.small != null ? u.photos.small : userPhoto}`}
                     className={styles.userPhoto}/>
-
+         </NavLink>
 
            </div>
                <div>

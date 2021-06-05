@@ -53,12 +53,12 @@ export const dialogsReducer = (state = initialState, action: DialogsReducerActio
     }
 }
 
-export const sendMessageAC = (): SendMessageActionType => {
+export const sendMessage = (): SendMessageActionType => {
     return {
         type: 'SEND-MESSAGE',
     } as const
 }
-export const updateNewMessageBodyAC = (body: string): UpdateNewPostTextActionType => {
+export const updateNewMessageBody = (body: string): UpdateNewPostTextActionType => {
     return {
         type: 'UPDATE-NEW-MESSAGE-BODY',
         body: body

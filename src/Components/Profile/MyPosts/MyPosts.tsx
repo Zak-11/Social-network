@@ -20,7 +20,7 @@ export type ProfilePageProps = {
 }
 
 
-export function MyPosts(props: ProfilePageProps) {
+export function MyPostsContainer (props: ProfilePageProps) {
     let postsElements =
         props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 

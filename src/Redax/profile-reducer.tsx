@@ -48,13 +48,13 @@ export const profileReducer = (state = initialState, action: ProfileReducerActio
     }
 
 }
-export const addPostAC = (): addPostActionType => {
+export const addPost = (): addPostActionType => {
     return {
         type: 'ADD-POST',
 
     } as const
 }
-export const updateNewPostTextAC = (newText: string): updateNewPostTextActionType => {
+export const updateNewPostText = (newText: string): updateNewPostTextActionType => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
         newText: newText

@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import {Header} from "./Components/Header/Header";
 import {NavBar} from "./Components/NavBar/NavBar";
-import {Profile} from "./Components/Profile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./Components/News/News"
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settinds/Settings";
-import {DialogsContainer} from "./Components/Dialogs/DialogsContaner";
+
 import UsersContainer from "./Components/Users/UsersContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
+import DialogsContainer from "./Components/Dialogs/DialogsContaner";
 
 
 
@@ -24,7 +25,7 @@ const App: React.FC<PropsType> = () => {
                 <NavBar/>
                 <div className='app-wrapper-content'>
                     <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
-                    <Route path={'/profile'} render={() => <Profile/>}/>
+                    <Route path={'/profile'} render={() => <ProfileContainer />}/>
                     <Route path={'/users'} render={() => <UsersContainer/>}/>
 
 

@@ -24,7 +24,7 @@ export type DialogTypeProps = {
     sendMessage: () => void
 }
 
-export function Dialogs(props: DialogTypeProps) {
+export function DialogsContainer(props: DialogTypeProps) {
 
     let dialogsElements = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     let messagesElements = props.messages.map(m => <Messages key={m.id} messages={m.message}/>)

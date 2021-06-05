@@ -1,9 +1,9 @@
 import React from 'react';
-import { sendMessageAC, updateNewMessageBodyAC} from "../../Redax/dialogs-reduser";
-import {Dialogs} from "./Dialogs";
+import {sendMessage, updateNewMessageBody} from "../../Redax/dialogs-reduser";
+import { DialogsContainer} from "./Dialogs";
 import {AppStateType} from "../../Redax/redux-store";
 import {connect} from "react-redux";
-import {Dispatch} from 'redux';
+
 
 
 
@@ -17,14 +17,8 @@ let mapStateToProps = (state: AppStateType) => {
 }
 
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
 
-    return {
-        sendMessage: () => {dispatch(sendMessageAC( ))},
-        updateNewPostText: (body: string) => {dispatch(updateNewMessageBodyAC(body))}
-    }
-}
-export const DialogsContainer = connect(mapStateToProps,mapDispatchToProps) (Dialogs)
-
-
-
+export default connect(mapStateToProps,{
+    sendMessage:sendMessage,
+    updateNewPostText:updateNewMessageBody
+}) (DialogsContainer)
