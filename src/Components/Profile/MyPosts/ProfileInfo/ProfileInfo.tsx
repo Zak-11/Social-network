@@ -12,10 +12,9 @@ export function ProfileInfo(props: ProfileType) {
         return <Preloader/>
     }
 
-
     return (
         <div>
-
+            <img src={`https://74foto.ru/wp-content/uploads/kak-krasivo-sfotografirovatsya-parnyu-na-avu_1.jpg`}/>
 
             <div>
                 <img src={props.profile.photos.large}/>
