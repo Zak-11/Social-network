@@ -1,13 +1,30 @@
-import {PostType} from "../Components/Profile/MyPosts/MyPosts";
 
 
-export let initialState = {
+export type PostType = {
+    id: number
+    message: string
+    likesCount: number
+
+
+}
+export type ProfilePageProps = {
+    posts: PostType[]
+    newPostText: string,
+    updateNewPostText: (value: string) => void;
+    addPost: () => void
+    profile: any
+}
+
+const initialState = {
     newPostText: "",
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 2},
         {id: 2, message: 'It,s my first post', likesCount: 26},
     ],
+    profile: null
+
 }
+
 export type addPostActionType = {
     type: 'ADD-POST',
 }
@@ -18,8 +35,15 @@ export type updateNewPostTextActionType = {
     newText: string
 }
 
+export  type setUserProfileType = {
+    type: ' SET_USER_PROFILE'
+    profile: any
+
+}
+
+
 export type ProfileReducerActionsType =
-    addPostActionType | updateNewPostTextActionType
+    addPostActionType | updateNewPostTextActionType | setUserProfileType
 
 
 export const profileReducer = (state = initialState, action: ProfileReducerActionsType) => {
@@ -43,6 +67,12 @@ export const profileReducer = (state = initialState, action: ProfileReducerActio
                 newPostText: action.newText
             }
 
+        case " SET_USER_PROFILE":
+            return {
+                ...state,
+                profile: action.profile
+            }
+
         default:
             return state
     }
@@ -60,3 +90,11 @@ export const updateNewPostText = (newText: string): updateNewPostTextActionType 
         newText: newText
     } as const
 }
+
+export const setUsersProfile = (profile: any): setUserProfileType => {
+    return {
+        type: ' SET_USER_PROFILE',
+        profile: profile
+    } as const
+}
+

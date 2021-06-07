@@ -6,10 +6,9 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./Components/News/News"
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settinds/Settings";
-
 import UsersContainer from "./Components/Users/UsersContainer";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContaner";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 
 
@@ -18,6 +17,7 @@ type PropsType = {}
 
 const App: React.FC<PropsType> = () => {
 
+
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -25,7 +25,7 @@ const App: React.FC<PropsType> = () => {
                 <NavBar/>
                 <div className='app-wrapper-content'>
                     <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
-                    <Route path={'/profile'} render={() => <ProfileContainer />}/>
+                    <Route path={'/profile'} render={() => <ProfileContainer   />}/>
                     <Route path={'/users'} render={() => <UsersContainer/>}/>
 
 

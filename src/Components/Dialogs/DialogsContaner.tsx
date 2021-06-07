@@ -3,6 +3,7 @@ import {sendMessage, updateNewMessageBody} from "../../Redax/dialogs-reduser";
 import { DialogsContainer} from "./Dialogs";
 import {AppStateType} from "../../Redax/redux-store";
 import {connect} from "react-redux";
+import {updateNewPostText} from "../../Redax/profile-reducer";
 
 
 
@@ -10,8 +11,8 @@ import {connect} from "react-redux";
 let mapStateToProps = (state: AppStateType) => {
 
     return {
-        dialogs: state.dialogsPage.dialogs,
-        messages: state.dialogsPage.messages,
+       dialogs: state.dialogsPage.dialogs,
+        messages:state.dialogsPage.messages,
         newMessageBody: state.dialogsPage.newMessageBody
     }
 }
@@ -19,6 +20,5 @@ let mapStateToProps = (state: AppStateType) => {
 
 
 export default connect(mapStateToProps,{
-    sendMessage:sendMessage,
-    updateNewPostText:updateNewMessageBody
+    sendMessage, updateNewPostText,updateNewMessageBody
 }) (DialogsContainer)

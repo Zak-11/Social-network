@@ -1,16 +1,22 @@
 import React from 'react';
 import {addPost, updateNewPostText} from "../../../Redax/profile-reducer";
-import {MyPostsContainer} from "./MyPosts";
 import {connect} from "react-redux";
 import {AppStateType} from "../../../Redax/redux-store";
+import {MyPostsContainer} from "./MyPosts";
+
+
 
 
 let mapStateToProps = (state: AppStateType) => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+        newPostText: state.profilePage.newPostText,
+        profile: state.profilePage.profile
     }
 }
+
+
+
 /*const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         addPost: () => {

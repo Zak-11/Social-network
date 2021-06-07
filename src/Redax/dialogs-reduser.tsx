@@ -1,3 +1,26 @@
+export type DialogType = {
+    id: number
+    name: string
+
+}
+
+
+export type MessageType = {
+    id: number
+    message: string
+
+}
+
+export type DialogTypeProps = {
+    newMessageBody: string;
+    dialogs: DialogType[]
+    messages: MessageType[]
+    updateNewPostText: (body: string) => void;
+    sendMessage: () => void
+}
+
+
+
 export let initialState = {
     dialogs: [
         {id: 1, name: "Diana"},
@@ -5,18 +28,18 @@ export let initialState = {
         {id: 3, name: "Mikal"},
         {id: 4, name: "Ilia"},
 
-    ],
+    ] as Array<DialogType>,
     messages: [
         {id: 1, message: "Hi!"},
         {id: 2, message: "How is your it?"},
         {id: 3, message: "Yo."},
         {id: 4, message: "Yo."},
 
-    ],
+    ] as Array<MessageType>,
     newMessageBody: ""
-
-
 }
+
+
 export type SendMessageActionType = {
     type: 'SEND-MESSAGE'
 }
@@ -30,7 +53,11 @@ export type DialogsReducerActionsType =
     SendMessageActionType | UpdateNewPostTextActionType
 
 
-export const dialogsReducer = (state = initialState, action: DialogsReducerActionsType) => {
+export type InitialStateType = typeof initialState
+
+
+
+export const dialogsReducer = (state: InitialStateType =  initialState, action: DialogsReducerActionsType) : InitialStateType => {
     switch (action.type) {
         case "UPDATE-NEW-MESSAGE-BODY":
             return {

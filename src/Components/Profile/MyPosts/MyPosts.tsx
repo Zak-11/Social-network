@@ -1,23 +1,10 @@
 import React, {ChangeEvent} from 'react';
 import classes from './MyPosts.module.css'
 import {Post} from "./Post/Post";
+import {ProfilePageProps} from "../../../Redax/profile-reducer";
 
 
 
-export type PostType = {
-    id: number
-    message: string
-    likesCount: number
-
-
-}
-export type ProfilePageProps = {
-    posts: PostType[]
-    newPostText: string,
-    updateNewPostText: (value: string) => void;
-    addPost: () => void
-
-}
 
 
 export function MyPostsContainer (props: ProfilePageProps) {

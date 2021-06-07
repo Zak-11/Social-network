@@ -12,7 +12,7 @@ export type UserLocation = {
     country: string
 }
 export type InitialStateUsersType = {
-    users: Array<UserType>
+    users: UserType[]
     pageSize: number,
     totalUsersCount: number,
     currentPage: number
