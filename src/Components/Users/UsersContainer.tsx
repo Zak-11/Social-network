@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../Redax/redux-store";
 import {
     follow,
-    InitialStateUsersType, isFetching, onPageChange,
+    InitialStateUsersType, isFetchingAC, onPageChange,
     setCurrentPage,
     setTotalUsersCount,
     setUsers,
@@ -15,6 +15,7 @@ import {UsersContainer} from "./UsersARIComponent";
 
 type MapStateType = {
     usersPage: InitialStateUsersType
+    isFetching: boolean
 
 }
 export type MapDispatchPropsType = {
@@ -24,14 +25,14 @@ export type MapDispatchPropsType = {
     setCurrentPage: (pageNumber: number) => void
     setTotalUsersCount: (totalCount: number) => void
     onPageChange: (p: number) => void
-    isFetching: (isFetching: boolean) => void
+    setIsFetching: (isFetching: boolean) => void
+    // isFetching: (isFetching: boolean) => void
 }
 
 export type UsersPropsType = MapDispatchPropsType & MapStateType
 
 const mapStateToProps = (state: AppStateType) => {
     return {
-
         usersPage: state.usersPage,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
@@ -76,5 +77,5 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
 
 export default connect(mapStateToProps, {
 
-    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, onPageChange, isFetching
+    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, onPageChange, setIsFetching: isFetchingAC
 })(UsersContainer)

@@ -21,4 +21,7 @@ export type AppStateType = ReturnType<typeof reducers>
 
 export default store
 
+// @ts-ignore
+window.store = store
+
 

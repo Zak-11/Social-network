@@ -2,10 +2,18 @@ import React, {ChangeEvent} from 'react';
 import classes from './Dialogs.module.css'
 import {DialogItem} from "../Dialogitem/Dialogitem";
 import {Messages} from "../Messages/Messages";
-import {DialogTypeProps} from "../../Redax/dialogs-reduser";
+import {DialogType, MessageType} from "../../Redax/dialogs-reduser";
+
+export type DialogsContainerPropsType = {
+    dialogs: DialogType[]
+    messages: MessageType[]
+    newMessageBody: string;
+    updateNewMessageBody: (body: string) => void;
+    sendMessage: () => void
+}
 
 
-export function DialogsContainer(props: DialogTypeProps) {
+export function DialogsContainer(props: DialogsContainerPropsType) {
 
     let dialogsElements = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     let messagesElements = props.messages.map(m => <Messages key={m.id} messages={m.message}/>)
@@ -14,7 +22,7 @@ export function DialogsContainer(props: DialogTypeProps) {
         props.sendMessage()
     }
     let onNewMessageChange = ((e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewPostText(e.currentTarget.value)
+        props.updateNewMessageBody(e.currentTarget.value)
     })
 
 

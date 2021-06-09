@@ -11,13 +11,7 @@ export type MessageType = {
 
 }
 
-export type DialogTypeProps = {
-    newMessageBody: string;
-    dialogs: DialogType[]
-    messages: MessageType[]
-    updateNewPostText: (body: string) => void;
-    sendMessage: () => void
-}
+
 
 
 
@@ -46,7 +40,7 @@ export type SendMessageActionType = {
 export type UpdateNewPostTextActionType = {
 
     type: 'UPDATE-NEW-MESSAGE-BODY'
-    body: string
+    newMessageBody: string
 }
 
 export type DialogsReducerActionsType =
@@ -62,7 +56,7 @@ export const dialogsReducer = (state: InitialStateType =  initialState, action: 
         case "UPDATE-NEW-MESSAGE-BODY":
             return {
                 ...state,
-                newMessageBody: action.body
+                newMessageBody: action.newMessageBody
             }
 
 
@@ -88,8 +82,9 @@ export const sendMessage = (): SendMessageActionType => {
 export const updateNewMessageBody = (body: string): UpdateNewPostTextActionType => {
     return {
         type: 'UPDATE-NEW-MESSAGE-BODY',
-        body: body
+        newMessageBody: body
     } as const
 }
+
 
 

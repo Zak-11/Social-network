@@ -162,7 +162,7 @@ export const onPageChange = (p: number): onPageChangedType => {
         p: p
     }
 }
- export const isFetching = (isFetching:  boolean): isFetchingType => {
+ export const isFetchingAC = (isFetching:  boolean): isFetchingType => {
     return {
         type: 'TOGGLE_IS_FETCHING',
         isFetching:  isFetching

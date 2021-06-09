@@ -1,9 +1,20 @@
 import React from "react";
 import styles from './users.module.css';
-import {UsersPropsType} from "./UsersContainer";
+// import {UsersPropsType} from "./UsersContainer";
 import userPhoto from "../../ass/images/Clip.png"
 import {NavLink} from "react-router-dom";
+import {InitialStateUsersType, UserType} from "../../Redax/users-reduser";
 
+
+type UsersPropsType = {
+    follow: (userID: number) => void
+    unfollow: (userID: number) => void
+    setCurrentPage: (pageNumber: number) => void
+    setTotalUsersCount: (totalCount: number) => void
+    setUsers: (users: Array<UserType>) => void
+    usersPage: InitialStateUsersType
+    onPageChange: (p: number) => void
+}
 
 export let Users = (props: UsersPropsType) => {
 
@@ -21,7 +32,7 @@ export let Users = (props: UsersPropsType) => {
         <div>
             {pages.map(p => {
 
-                return <span className={`${props.usersPage.currentPage === p && styles.selectedPage}`}
+                return <span key={p} className={`${props.usersPage.currentPage === p && styles.selectedPage}`}
                              onClick={() => {
                                  props.onPageChange(p)
                              }}>{p}</span>
@@ -34,7 +45,7 @@ export let Users = (props: UsersPropsType) => {
 
             <span>
            <div>
-         <NavLink to={'/profile'} key={u.id}>
+         <NavLink to={'/profile/'+u.id} key={u.id}>
                <img src={`${u.photos.small != null ? u.photos.small : userPhoto}`}
                     className={styles.userPhoto}/>
          </NavLink>
