@@ -48,6 +48,7 @@ export type ProfileReducerActionsType =
 
 export const profileReducer = (state = initialState, action: ProfileReducerActionsType) => {
     switch (action.type) {
+
         case "ADD-POST":
             const newPost: PostType = {
                 id: new Date().getTime(),
