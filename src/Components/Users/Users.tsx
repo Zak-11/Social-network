@@ -47,7 +47,7 @@ export let Users = (props: UsersPropsType) => {
             <span>
            <div>
          <NavLink to={'/profile/'+u.id} key={u.id}>
-               <img alt={'There should be a picture here.'} src={`${u.photos.small != null ? u.photos.small : userPhoto}`}
+               <img alt={'There should be a photo here'} src={`${u.photos.small != null ? u.photos.small : userPhoto}`}
                     className={styles.userPhoto}/>
          </NavLink>
 

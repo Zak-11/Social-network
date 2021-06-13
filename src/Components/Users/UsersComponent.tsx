@@ -10,7 +10,7 @@ import {
     unfollow,
     UserType
 } from "../../Redax/users-reduser";
-import {UsersContainer} from "./UsersARIComponent";
+import {UsersContainer} from "./UsersContainer";
 
 
 type MapStateType = {
@@ -26,7 +26,7 @@ export type MapDispatchPropsType = {
     setTotalUsersCount: (totalCount: number) => void
     onPageChange: (p: number) => void
     setIsFetching: (isFetching: boolean) => void
-    // isFetching: (isFetching: boolean) => void
+
 }
 
 export type UsersPropsType = MapDispatchPropsType & MapStateType
