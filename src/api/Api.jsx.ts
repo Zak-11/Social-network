@@ -1,4 +1,5 @@
 import axios from "axios";
+import {UserType} from "../Redax/users-reduser";
 
 
 const instance = axios.create({
@@ -19,15 +20,23 @@ export const userAPI = {
     }
 }
 
-
-
 export const profileAPI = {
 
-  getProfile( userId : string ){
-    return instance.get(`profile/` + userId)
-        .then(response => {
-            return response.data
+    getProfile(userId: string) {
+        return instance.get(`profile/` + userId)
+            .then(response => {
+                return response.data
 
-        })
+            })
+    }
 }
+
+export const followAPI = {
+
+    getFollow(u: UserType) {
+        return instance.get(`follow/${u.id}`, {})
+            .then(response => {
+                return response.data
+            })
+    }
 }
