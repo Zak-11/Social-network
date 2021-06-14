@@ -7,6 +7,7 @@ import {followAPI} from "../../api/Api.jsx";
 
 
 type UsersPropsType = {
+    followingInProgress: any;
     follow: (userID: number) => void
     unfollow: (userID: number) => void
     setCurrentPage: (pageNumber: number) => void
@@ -14,6 +15,7 @@ type UsersPropsType = {
     setUsers: (users: Array<UserType>) => void
     usersPage: InitialStateUsersType
     onPageChange: (p: number) => void
+
 }
 
 export let Users = (props: UsersPropsType) => {
@@ -53,24 +55,30 @@ export let Users = (props: UsersPropsType) => {
            </div>
                <div>
                    {u.followed
-                       ? <button onClick={() => {
+                       ? <button disabled={props.followingInProgress.some( (id: number) => id === u.id)} onClick={() => {
+
+                          props.followingInProgress(true, u.id )
                            followAPI.getFollow(u)
                                .then(data => {
                                    if (data.resultCode == 0) {
                                        props.follow(u.id)
                                    }
+                                   props.followingInProgress(false, u.id)
                                });
                            props.unfollow(u.id)
 
                        }}>Unfollow</button>
 
 
-                       : <button onClick={() => {
+                       : <button disabled={props.followingInProgress.some((id: number) => id === u.id)} onClick={() => {
+
+                           props.followingInProgress(true,u.id )
                            followAPI.getFollow(u)
                                .then(data => {
                                    if (data.resultCode == 0) {
                                        props.follow(u.id)
                                    }
+                                   props.followingInProgress(false, u.id)
                                });
                            props.follow(u.id)
 

@@ -17,7 +17,7 @@ export type InitialStateUsersType = {
     totalUsersCount: number,
     currentPage: number
     isFetching: boolean
-
+    followingInProgress: number[]
 
 }
 const initialState: InitialStateUsersType = {
@@ -26,7 +26,7 @@ const initialState: InitialStateUsersType = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-
+    followingInProgress: [] ,
 
 }
 
@@ -69,8 +69,16 @@ export type isFetchingType = {
     type: 'TOGGLE_IS_FETCHING',
     isFetching: boolean
 }
+
+export type followingInProgressType = {
+    type: 'TOGGLE_IS_PROGRESS'
+    isFetching: boolean,
+    userID: number,
+
+
+}
 export type UsersReducerActionsType =
-    followActionType | unfollowActionType | setActionType | setCurrentType | setTotalCountType | onPageChangedType | isFetchingType
+    followActionType | unfollowActionType | setActionType | setCurrentType | setTotalCountType | onPageChangedType | isFetchingType | followingInProgressType
 
 
 export const usersReducer = (state: InitialStateUsersType = initialState, action: UsersReducerActionsType): InitialStateUsersType => {
@@ -118,6 +126,14 @@ export const usersReducer = (state: InitialStateUsersType = initialState, action
         case "TOGGLE_IS_FETCHING": {
             return {...state, isFetching:action.isFetching}
 
+        }
+        case "TOGGLE_IS_PROGRESS":{
+            return  {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userID]
+                    : state.followingInProgress.filter(id => id !== action.userID)
+            }
         }
         default:
             return state
@@ -168,4 +184,12 @@ export const onPageChange = (p: number): onPageChangedType => {
         isFetching:  isFetching
     }
 
+ }
+
+ export const  followingInProgressAC = (isFetching: boolean, userID: number) : followingInProgressType => {
+    return {
+        type: 'TOGGLE_IS_PROGRESS',
+        isFetching: isFetching,
+        userID:userID
+    }
  }
