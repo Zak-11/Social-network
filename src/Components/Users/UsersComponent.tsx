@@ -29,7 +29,7 @@ export type MapDispatchPropsType = {
     onPageChange: (p: number) => void
     isFetchingAC: (isFetching: boolean) => void
     getUsers:(currentPage: number, pageSize: number) => void
-  // getUsersThunkCreator:
+
 
 }
 

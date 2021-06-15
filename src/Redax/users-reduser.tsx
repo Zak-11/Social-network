@@ -21,7 +21,7 @@ export type InitialStateUsersType = {
     totalUsersCount: number,
     currentPage: number
     isFetching: boolean
-    followingInProgress: number[]
+    followingInProgress: Array<number>
 
 }
 const initialState: InitialStateUsersType = {
@@ -201,14 +201,14 @@ export const onPageChange = (p: number): onPageChangedType => {
 
 export const getUsersThunkCreator = (currentPage: number,pageSize: number)  => {
 
-    return ( dispatch: Dispatch)=> {
+    return ( dispatch:Dispatch)=> {
 
     dispatch(isFetchingAC(true))
 
         userAPI.getUsers(currentPage, pageSize).then(data => {
-        isFetchingAC(false)
-        setUsers(data.items)
-        setTotalUsersCount(data.totalCount)
+        dispatch( isFetchingAC(false))
+        dispatch(setUsers(data.items))
+        dispatch(setTotalUsersCount(data.totalCount))
     });
 }
 }
