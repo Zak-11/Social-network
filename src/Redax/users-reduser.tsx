@@ -1,3 +1,7 @@
+import {userAPI} from "../api/Api.jsx";
+import {Dispatch} from "redux";
+
+
 export type UserType = {
     photos: string;
     id: number
@@ -193,3 +197,18 @@ export const onPageChange = (p: number): onPageChangedType => {
         userID:userID
     }
  }
+
+
+export const getUsersThunkCreator = (currentPage: number,pageSize: number)  => {
+
+    return ( dispatch: Dispatch)=> {
+
+    dispatch(isFetchingAC(true))
+
+        userAPI.getUsers(currentPage, pageSize).then(data => {
+        isFetchingAC(false)
+        setUsers(data.items)
+        setTotalUsersCount(data.totalCount)
+    });
+}
+}

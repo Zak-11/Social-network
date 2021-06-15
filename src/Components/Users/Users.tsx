@@ -7,7 +7,8 @@ import {followAPI} from "../../api/Api.jsx";
 
 
 type UsersPropsType = {
-    followingInProgress: any;
+
+    followingInProgress :any
     follow: (userID: number) => void
     unfollow: (userID: number) => void
     setCurrentPage: (pageNumber: number) => void

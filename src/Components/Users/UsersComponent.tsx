@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redax/redux-store";
 import {
-    follow, followingInProgressAC,
+    follow, followingInProgressAC, getUsersThunkCreator,
     InitialStateUsersType, isFetchingAC, onPageChange,
     setCurrentPage,
     setTotalUsersCount,
@@ -18,6 +18,7 @@ type MapStateType = {
     isFetching: boolean
     followingInProgress:Array<number>
 
+
 }
 export type MapDispatchPropsType = {
     follow: (userID: number) => void
@@ -26,7 +27,9 @@ export type MapDispatchPropsType = {
     setCurrentPage: (pageNumber: number) => void
     setTotalUsersCount: (totalCount: number) => void
     onPageChange: (p: number) => void
-    setIsFetching: (isFetching: boolean) => void
+    isFetchingAC: (isFetching: boolean) => void
+    getUsers:(currentPage: number, pageSize: number) => void
+  // getUsersThunkCreator:
 
 }
 
@@ -46,5 +49,7 @@ const mapStateToProps = (state: AppStateType) => {
 
 export default connect(mapStateToProps, {
 
-    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, onPageChange, setIsFetching: isFetchingAC,followingInProgressAC
+    follow, unfollow, setUsers, setCurrentPage,
+    setTotalUsersCount, onPageChange,isFetchingAC,
+    followingInProgressAC,getUsers: getUsersThunkCreator
 })(UsersContainer)
