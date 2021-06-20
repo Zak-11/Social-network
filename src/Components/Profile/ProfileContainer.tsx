@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {setUsersProfile} from "../../Redax/profile-reducer";
 import {withRouter} from "react-router";
 import {RouteComponentProps} from "react-router-dom";
-import {profileAPI} from "../../api/Api";
+import {userAPI} from "../../api/Api";
 
 
 type PathParamsType = {
@@ -34,9 +34,10 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
             userId = '2'
         }
 
-        profileAPI.getProfile(userId).then(data => {
-            this.props.setUsersProfile(data)
-        });
+       userAPI.getProfile(userId)
+            .then(response => {
+            this.props.setUsersProfile(response.data)
+            });
     }
 
     render() {
