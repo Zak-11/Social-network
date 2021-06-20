@@ -1,3 +1,6 @@
+import {userAPI} from "../api/Api";
+import {Dispatch} from "redux";
+
 
 
 export type PostType = {
@@ -85,6 +88,17 @@ export const addPost = (): addPostActionType => {
 
     } as const
 }
+export const setUsersProfile = (profile: any): setUserProfileType => {
+    return {
+        type: ' SET_USER_PROFILE',
+        profile: profile
+    } as const
+}
+export const getUserProfile= (userId: string) => (dispatch:Dispatch) => {
+    userAPI.getProfile(userId).then(response => {
+        dispatch(setUsersProfile(response.data))
+    })
+}
 export const updateNewPostText = (newText: string): updateNewPostTextActionType => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
@@ -92,10 +106,5 @@ export const updateNewPostText = (newText: string): updateNewPostTextActionType 
     } as const
 }
 
-export const setUsersProfile = (profile: any): setUserProfileType => {
-    return {
-        type: ' SET_USER_PROFILE',
-        profile: profile
-    } as const
-}
+
 
