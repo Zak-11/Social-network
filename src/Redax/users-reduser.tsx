@@ -1,4 +1,4 @@
-import {userAPI} from "../api/Api.jsx";
+import {userAPI} from "../api/Api";
 import {Dispatch} from "redux";
 
 
@@ -30,7 +30,7 @@ const initialState: InitialStateUsersType = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: [] ,
+    followingInProgress: [],
 
 }
 
@@ -82,7 +82,14 @@ export type followingInProgressType = {
 
 }
 export type UsersReducerActionsType =
-    followActionType | unfollowActionType | setActionType | setCurrentType | setTotalCountType | onPageChangedType | isFetchingType | followingInProgressType
+    followActionType
+    | unfollowActionType
+    | setActionType
+    | setCurrentType
+    | setTotalCountType
+    | onPageChangedType
+    | isFetchingType
+    | followingInProgressType
 
 
 export const usersReducer = (state: InitialStateUsersType = initialState, action: UsersReducerActionsType): InitialStateUsersType => {
@@ -128,11 +135,11 @@ export const usersReducer = (state: InitialStateUsersType = initialState, action
         }
 
         case "TOGGLE_IS_FETCHING": {
-            return {...state, isFetching:action.isFetching}
+            return {...state, isFetching: action.isFetching}
 
         }
-        case "TOGGLE_IS_PROGRESS":{
-            return  {
+        case "TOGGLE_IS_PROGRESS": {
+            return {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userID]
@@ -144,13 +151,13 @@ export const usersReducer = (state: InitialStateUsersType = initialState, action
     }
 
 }
-export const follow = (userID: number): followActionType => {
+export const followSuccess = (userID: number): followActionType => {
     return {
         type: 'FOLLOW',
         userID: userID
     } as const
 }
-export const unfollow = (userID: number): unfollowActionType => {
+export const unfollowSuccess = (userID: number): unfollowActionType => {
     return {
         type: 'UNFOLLOW',
         userID: userID
@@ -182,33 +189,61 @@ export const onPageChange = (p: number): onPageChangedType => {
         p: p
     }
 }
- export const isFetchingAC = (isFetching:  boolean): isFetchingType => {
+export const isFetchingAC = (isFetching: boolean): isFetchingType => {
     return {
         type: 'TOGGLE_IS_FETCHING',
-        isFetching:  isFetching
+        isFetching: isFetching
     }
 
- }
+}
 
- export const  followingInProgressAC = (isFetching: boolean, userID: number) : followingInProgressType => {
+export const followingInProgressAC = (isFetching: boolean, userID: number): followingInProgressType => {
     return {
         type: 'TOGGLE_IS_PROGRESS',
         isFetching: isFetching,
-        userID:userID
+        userID: userID
     }
- }
+}
 
 
-export const getUsersThunkCreator = (currentPage: number,pageSize: number)  => {
+export const getUsers = (currentPage: number, pageSize: number) => {
 
-    return ( dispatch:Dispatch)=> {
+    return (dispatch: Dispatch) => {
 
-    dispatch(isFetchingAC(true))
+        dispatch(isFetchingAC(true))
 
         userAPI.getUsers(currentPage, pageSize).then(data => {
-        dispatch( isFetchingAC(false))
-        dispatch(setUsers(data.items))
-        dispatch(setTotalUsersCount(data.totalCount))
-    });
+            dispatch(isFetchingAC(false))
+            dispatch(setUsers(data.items))
+            dispatch(setTotalUsersCount(data.totalCount))
+        });
+    }
 }
+
+export const follow = (userId: number) => {
+
+    return (dispatch: Dispatch) => {
+        dispatch(followingInProgressAC(true, userId))
+        userAPI.follow(userId)
+            .then(response => {
+                if (response.data.resultCode == 0) {
+                    dispatch(followSuccess(userId));
+                }
+                dispatch(followingInProgressAC(false, userId))
+            })
+    }
+}
+
+export const unfollow = (userId: number) => {
+
+    return (dispatch: Dispatch) => {
+        dispatch(followingInProgressAC(true, userId))
+        userAPI.unFollow(userId)
+            .then(response => {
+                if (response.data.resultCode == 0) {
+                    dispatch(followSuccess(userId));
+                }
+                dispatch(followingInProgressAC(false, userId))
+            })
+    }
 }

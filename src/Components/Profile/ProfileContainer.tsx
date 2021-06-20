@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {setUsersProfile} from "../../Redax/profile-reducer";
 import {withRouter} from "react-router";
 import {RouteComponentProps} from "react-router-dom";
-import {profileAPI} from "../../api/Api.jsx";
+import {profileAPI} from "../../api/Api";
 
 
 type PathParamsType = {
