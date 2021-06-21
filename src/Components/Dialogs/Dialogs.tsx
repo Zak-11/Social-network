@@ -3,6 +3,8 @@ import classes from './Dialogs.module.css'
 import {DialogItem} from "../Dialogitem/Dialogitem";
 import {Messages} from "../Messages/Messages";
 import {DialogType, MessageType} from "../../Redax/dialogs-reduser";
+import { Redirect } from 'react-router'
+
 
 export type DialogsContainerPropsType = {
     dialogs: DialogType[]
@@ -10,6 +12,7 @@ export type DialogsContainerPropsType = {
     newMessageBody: string;
     updateNewMessageBody: (body: string) => void;
     sendMessage: () => void
+    isAuth: boolean
 }
 
 
@@ -24,7 +27,7 @@ export function DialogsContainer(props: DialogsContainerPropsType) {
     let onNewMessageChange = ((e: ChangeEvent<HTMLTextAreaElement>) => {
         props.updateNewMessageBody(e.currentTarget.value)
     })
-
+      if (!props.isAuth) return <Redirect to = {"/login"}/>
 
     return (
         <div className={classes.dialogs}>

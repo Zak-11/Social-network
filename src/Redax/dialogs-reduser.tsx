@@ -30,7 +30,8 @@ export let initialState = {
         {id: 4, message: "Yo."},
 
     ] as Array<MessageType>,
-    newMessageBody: ""
+    newMessageBody: "",
+
 }
 
 
