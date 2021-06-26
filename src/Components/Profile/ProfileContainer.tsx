@@ -16,7 +16,7 @@ type PathParamsType = {
 
 type MapStateToPropsType = {
     profile: any
-
+  status:string
 
 }
 
@@ -46,7 +46,7 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
 
         return (
             <div>
-                <Profile profile={this.props.profile}/>
+                <Profile profile={this.props.profile} status={this.props.status}/>
 
             </div>
         );

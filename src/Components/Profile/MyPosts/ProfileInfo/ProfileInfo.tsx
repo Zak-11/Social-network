@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css'
 import {Preloader} from "../../../Components/common/Preloader";
-
+import {ProfileStatus} from "./ProfileStatus";
 
 export type ProfileType = {
     profile: any
+    status: string
 }
 
 export function ProfileInfo(props: ProfileType) {
@@ -22,7 +23,7 @@ export function ProfileInfo(props: ProfileType) {
             </div>
             <div
                 className={classes.descriptionBlock}>
-                ava+description
+                <ProfileStatus status={props.status}/>
             </div>
         </div>
 
