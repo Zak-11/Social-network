@@ -12,7 +12,7 @@ export type DialogsContainerPropsType = {
     newMessageBody: string;
     updateNewMessageBody: (body: string) => void;
     sendMessage: () => void
-    isAuth: boolean
+
 }
 
 
@@ -54,4 +54,5 @@ export function DialogsContainer(props: DialogsContainerPropsType) {
     )
 
 }
+
 

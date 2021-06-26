@@ -3,9 +3,10 @@ import {Profile} from "./Profile";
 import {AppStateType} from "../../Redax/redux-store";
 import {connect} from "react-redux";
 import {getUserProfile} from "../../Redax/profile-reducer";
-import {withRouter} from "react-router";
 import {RouteComponentProps} from "react-router-dom";
 import {AuthRedirect} from "../../hoc/AuthRedirect";
+import {compose} from "redux";
+import {withRouter} from "react-router";
 
 
 type PathParamsType = {
@@ -53,19 +54,17 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
 }
 
 
-
-
-
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profilePage.profile,
 
 
 })
 
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {getUserProfile})(ProfileContainer),
+    withRouter,
+    AuthRedirect
+)(ProfileContainer)
 
-let withUrlDataContainerComponent = withRouter(ProfileContainer)
 
-
-
-export default  AuthRedirect(connect(mapStateToProps, {getUserProfile})(withUrlDataContainerComponent))
 
