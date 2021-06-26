@@ -3,7 +3,6 @@ import {sendMessage, updateNewMessageBody} from "../../Redax/dialogs-reduser";
 import {DialogsContainer} from "./Dialogs";
 import {AppStateType} from "../../Redax/redux-store";
 import {connect} from "react-redux";
-
 import {AuthRedirect} from "../../hoc/AuthRedirect";
 import {compose} from "redux";
 
@@ -18,7 +17,7 @@ let mapStateToProps = (state: AppStateType) => {
     }
 }
 
-export default compose(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {sendMessage, updateNewMessageBody}),
     AuthRedirect
 )(DialogsContainer)
