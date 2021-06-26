@@ -163,13 +163,7 @@ export const unfollowSuccess = (userID: number): unfollowActionType => {
         userID: userID
     } as const
 }
-export const setUsers = (users: Array<UserType>): setActionType => {
-    return {
-        type: 'SET_USERS',
-        users: users
-    } as const
-
-}
+export const setUsers = (users: Array<UserType>): setActionType => ({type: 'SET_USERS', users: users} as const)
 export const setCurrentPage = (currentPage: number): setCurrentType => {
     return {
         type: 'SET_CURRENT',

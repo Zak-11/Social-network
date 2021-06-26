@@ -5,6 +5,7 @@ import {AppStateType} from "../../Redax/redux-store";
 import {connect} from "react-redux";
 
 
+
 let mapStateToProps = (state: AppStateType) => {
 
     return {
