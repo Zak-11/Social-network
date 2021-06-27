@@ -5,7 +5,7 @@ type ProfilePropsType = {
     status: string
 }
 
-export class ProfileStatus extends React.Component <ProfilePropsType>{
+export class ProfileStatus extends React.Component <ProfilePropsType> {
 
     state = {
         editMode: false
@@ -14,7 +14,7 @@ export class ProfileStatus extends React.Component <ProfilePropsType>{
 
     activateEditMode = () => {
         this.setState({
-            editMode:true
+            editMode: true
         })
     }
 
@@ -26,23 +26,23 @@ export class ProfileStatus extends React.Component <ProfilePropsType>{
     }
 
 
-    render(){
+    render() {
 
         return (
-        <div>
-            {!this.state. editMode &&
             <div>
-                <span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
-            </div>
-            }
-            {this.state. editMode &&
+                {!this.state.editMode &&
                 <div>
-                <input autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} value={this.props.status}/>
-            </div>
-            }
+                    <span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
+                </div>
+                }
+                {this.state.editMode &&
+                <div>
+                    <input autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} value={this.props.status}/>
+                </div>
+                }
 
-        </div>
-    )
-}
+            </div>
+        )
+    }
 }
 
