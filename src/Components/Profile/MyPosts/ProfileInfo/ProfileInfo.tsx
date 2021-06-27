@@ -5,7 +5,7 @@ import {ProfileStatus} from "./ProfileStatus";
 
 export type ProfileType = {
     profile: any
-    status: string
+    //status: string
 }
 
 export function ProfileInfo(props: ProfileType) {
@@ -23,7 +23,7 @@ export function ProfileInfo(props: ProfileType) {
             </div>
             <div
                 className={classes.descriptionBlock}>
-                <ProfileStatus status={props.status}/>
+                <ProfileStatus status={'Hello my friends'}/>
             </div>
         </div>
 
