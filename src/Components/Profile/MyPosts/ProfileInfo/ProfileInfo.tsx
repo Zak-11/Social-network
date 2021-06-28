@@ -24,7 +24,7 @@ export function ProfileInfo(props: ProfileType) {
             </div>
             <div
                 className={classes.descriptionBlock}>
-                <ProfileStatus status={'Hello my friends'}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
 

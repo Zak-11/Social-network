@@ -7,7 +7,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 export function Profile(props:ProfileType ) {
     return (
         <div>
-            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+            <ProfileInfo profile={props.profile} updateStatus={props.updateStatus} status={props.status}  />
             <MyPostsContainer/>
 
         </div>

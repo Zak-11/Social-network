@@ -65,7 +65,7 @@ let mapStateToProps = (state: AppStateType) => ({
 })
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus }),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
     withRouter,
     AuthRedirect
 )(ProfileContainer)
