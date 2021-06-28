@@ -21,7 +21,7 @@ type MapStateToPropsType = {
 }
 
 type MapDispatchToPropsType = {
-   // setUsersProfile: (profile: any) => void
+
     getUserProfile: (userId: string) => void
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
@@ -38,11 +38,11 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
         let userId = this.props.match.params.userId
 
         if (!userId) {
-            userId = '2'
+            userId = '17239'
         }
 
         this.props.getUserProfile(userId)
-       this.props.getStatus(userId)
+        this.props.getStatus(userId)
 
     }
 
