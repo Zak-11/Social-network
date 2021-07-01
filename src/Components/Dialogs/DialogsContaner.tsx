@@ -7,6 +7,8 @@ import {AuthRedirect} from "../../hoc/AuthRedirect";
 import {compose} from "redux";
 
 
+
+
 let mapStateToProps = (state: AppStateType) => {
 
     return {
@@ -16,6 +18,7 @@ let mapStateToProps = (state: AppStateType) => {
 
     }
 }
+
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {sendMessage, updateNewMessageBody}),
