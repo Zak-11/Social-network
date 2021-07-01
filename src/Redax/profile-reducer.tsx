@@ -11,15 +11,12 @@ export type PostType = {
 }
 export type ProfilePageProps = {
     posts: PostType[]
-    newPostText: string,
-    updateNewPostText: (value: string) => void;
-    addPost: () => void
+    addPost: (newPostText: string) => void
     profile: any
 
 }
 
 const initialState = {
-    newPostText: "",
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 2},
         {id: 2, message: 'It,s my first post', likesCount: 26},
@@ -30,13 +27,8 @@ const initialState = {
 }
 
 export type addPostActionType = {
+    newPostText: string;
     type: 'ADD-POST',
-}
-
-export type updateNewPostTextActionType = {
-
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: string
 }
 
 export  type setUserProfileType = {
@@ -52,7 +44,7 @@ export  type setStatusType = {
 
 
 export type ProfileReducerActionsType =
-    addPostActionType | updateNewPostTextActionType | setUserProfileType | setStatusType
+    addPostActionType  | setUserProfileType | setStatusType
 
 
 export const profileReducer = (state = initialState, action: ProfileReducerActionsType) => {
@@ -61,7 +53,7 @@ export const profileReducer = (state = initialState, action: ProfileReducerActio
         case "ADD-POST":
             const newPost: PostType = {
                 id: new Date().getTime(),
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0,
             }
             return {
@@ -71,14 +63,7 @@ export const profileReducer = (state = initialState, action: ProfileReducerActio
             }
 
 
-        case "UPDATE-NEW-POST-TEXT":
-            return {
-                ...state,
-                newPostText: action.newText
-            }
-
-
-        case " SET_STATUS":
+            case " SET_STATUS":
             return {
                 ...state,
                 status: action.status
@@ -96,12 +81,7 @@ export const profileReducer = (state = initialState, action: ProfileReducerActio
     }
 
 }
-export const addPost = (): addPostActionType => {
-    return {
-        type: 'ADD-POST',
-
-    } as const
-}
+export const addPost = (newPostText: string) => ({type:"ADD-POST", newPostText}) as const
 export const setUsersProfile = (profile: any): setUserProfileType => {
     return {
         type: ' SET_USER_PROFILE',
@@ -133,13 +113,6 @@ export const updateStatus = (status: string) => (dispatch: Dispatch) => {
         }
 
     })
-}
-
-export const updateNewPostText = (newText: string): updateNewPostTextActionType => {
-    return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        newText: newText
-    } as const
 }
 
 

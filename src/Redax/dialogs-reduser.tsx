@@ -26,7 +26,7 @@ export let initialState = {
         {id: 4, message: "Yo."},
 
     ] as Array<MessageType>,
-    newMessageBody: "",
+     newMessageBody: "",
 
 }
 
@@ -54,7 +54,7 @@ export const dialogsReducer = (state: InitialStateType =  initialState, action: 
         case "UPDATE-NEW-MESSAGE-BODY":
             return {
                 ...state,
-                newMessageBody: action.newMessageBody
+              newMessageBody: action.newMessageBody
             }
 
 
