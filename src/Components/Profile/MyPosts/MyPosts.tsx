@@ -3,8 +3,10 @@ import classes from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {ProfilePageProps} from "../../../Redax/profile-reducer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../../urils/validator/validator";
+import {Textarea} from "../../Components/common/FormContols/FormConttols";
 
-
+const maxLength10 = maxLengthCreator(10);
 export function MyPostsContainer(props: ProfilePageProps) {
     let postsElements =
         props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
@@ -38,9 +40,10 @@ let AddNewPostForm: React.FC<InjectedFormProps<AddPostFormType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder="Enter your post"
-                       name={"newPostText"}
-                       component={'textarea'}/>
+                <Field name="newPostText"
+                       placeholder={"Post message"}
+                       component={Textarea}
+                       validate={[required, maxLength10]}/>
             </div>
 
             <div>
