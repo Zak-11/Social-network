@@ -9,7 +9,7 @@ import UsersContainer from "./Components/Users/UsersContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContaner";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
-import {Login} from "./Components/Login/login";
+import Login from "./Components/Login/login";
 
 
 

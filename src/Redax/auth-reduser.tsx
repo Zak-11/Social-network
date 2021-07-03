@@ -52,7 +52,7 @@ export const login = (email: string, password: string, rememberMe = false) => (d
     authAPI.login(email, password, rememberMe)
         .then(response => {
         if(response.data.resultCode === 0) {
-           dispatch(setAuthUserData())
+           dispatch(setAuthUserData(null, null, null, false))
         }
 
     });}

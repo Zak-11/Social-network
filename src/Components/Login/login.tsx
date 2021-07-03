@@ -5,9 +5,10 @@ import {required} from "../../urils/validator/validator";
 import {login} from "../../Redax/auth-reduser";
 import {connect} from "react-redux";
 
+
 type FormLoginData = {
-    login: string,
-    password:number,
+    email: string,
+    password:string,
     rememberMe: boolean,
 }
 
@@ -17,14 +18,17 @@ export const LoginForm: React.FC<InjectedFormProps<FormLoginData>> = (props) => 
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Login'}
+                <Field placeholder="Email"
                        validate={[required]}
-                       name={'login'} component={Input}/>
+                       name={"email"}
+                       component={Input}/>
             </div>
             <div>
-                <Field placeholder={'Password'}
+                <Field placeholder='Password'
                        validate={[required]}
-                       name={'password'} component={Input}/>
+                       name={'password'}
+                       component={Input}
+                       type="password"/>
             </div>
             <div>
                 <Field component={Input} name={'rememberMe'} type={'checkbox'} /> remember me
@@ -37,18 +41,27 @@ export const LoginForm: React.FC<InjectedFormProps<FormLoginData>> = (props) => 
 
 }
 
-
+type LoginPropsType =  MapDispatchPropsType;
 const LoginReduxForm = reduxForm<FormLoginData>({form: 'login'})(LoginForm)
 
 
- const Login = () => {
+ const Login = (props: LoginPropsType) => {
     const onSubmit = (formData:FormLoginData) =>{
-  console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
     return <div>
         <h1>LOGIN</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 }
+
+type MapDispatchPropsType = {
+    login: (email: string, password: string, rememberMe: boolean) => void
+}
+
+
+
+
+
 export default connect(null, {login})(Login);
 
