@@ -4,6 +4,8 @@ import {Input} from "../Components/common/FormContols/FormConttols";
 import {required} from "../../urils/validator/validator";
 import {login} from "../../Redax/auth-reduser";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {AppStateType} from "../../Redax/redux-store";
 
 
 type FormLoginData = {
@@ -41,13 +43,19 @@ export const LoginForm: React.FC<InjectedFormProps<FormLoginData>> = (props) => 
 
 }
 
-type LoginPropsType =  MapDispatchPropsType;
+type LoginPropsType = MapStatePropsType & MapDispatchPropsType;
+
 const LoginReduxForm = reduxForm<FormLoginData>({form: 'login'})(LoginForm)
 
 
  const Login = (props: LoginPropsType) => {
     const onSubmit = (formData:FormLoginData) =>{
         props.login(formData.email, formData.password, formData.rememberMe)
+    }
+
+
+    if (props.isAuth) {
+        return  <Redirect to={"/profile"}/>
     }
     return <div>
         <h1>LOGIN</h1>
@@ -56,12 +64,20 @@ const LoginReduxForm = reduxForm<FormLoginData>({form: 'login'})(LoginForm)
 }
 
 type MapDispatchPropsType = {
+
     login: (email: string, password: string, rememberMe: boolean) => void
 }
 
+type MapStatePropsType = {
+    isAuth: boolean
+}
+
+let mapStateToProps = (state:AppStateType): MapStatePropsType => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
 
 
-
-
-export default connect(null, {login})(Login);
+export default connect(mapStateToProps, {login})(Login);
 
