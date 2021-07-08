@@ -10,22 +10,25 @@ import DialogsContainer from "./Components/Dialogs/DialogsContaner";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/login";
+import {connect} from "react-redux";
+import {getAuthUserData} from "./Redax/auth-reduser";
+import {AppStateType} from "./Redax/redux-store";
 
 
 
 
+class App extends React.Component<AppPropsType, {}> {
+    componentDidMount() {
+        this.props.getAuthUserData()
+    }
 
-type PropsType = {}
-
-const App: React.FC<PropsType> = () => {
-
-
+render() {
 
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
 
-                 <HeaderContainer />
+                <HeaderContainer />
                 <NavBar/>
                 <div className='app-wrapper-content'>
                     <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
@@ -42,8 +45,23 @@ const App: React.FC<PropsType> = () => {
             </div>
         </BrowserRouter>
     );
+
 }
 
 
-export default App;
+}
 
+type AppPropsType = MapStatePropsType & MapDispatchPropsType
+
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+    isAuth: state.auth.isAuth
+})
+type MapStatePropsType = {
+    isAuth: boolean
+}
+type MapDispatchPropsType = {
+    getAuthUserData: () => void
+}
+
+
+export default connect(mapStateToProps, {getAuthUserData})(App);
