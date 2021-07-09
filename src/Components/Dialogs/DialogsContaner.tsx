@@ -22,7 +22,7 @@ let mapStateToProps = (state: AppStateType) => {
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {sendMessage, updateNewMessageBody}),
-    AuthRedirect
+   AuthRedirect
 )(DialogsContainer)
 
 

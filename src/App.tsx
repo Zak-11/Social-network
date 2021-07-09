@@ -11,19 +11,21 @@ import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/login";
 import {connect} from "react-redux";
-import {getAuthUserData} from "./Redax/auth-reduser";
 import {AppStateType} from "./Redax/redux-store";
+import {initializeApp} from "./Redax/app-reduser";
+import {Preloader} from "./Components/Components/common/Preloader";
 
 
 
 
 class App extends React.Component<AppPropsType, {}> {
     componentDidMount() {
-        this.props.getAuthUserData()
+        this.props.initializeApp()
     }
 
 render() {
-
+    if (!this.props.initialized) return <Preloader/>
+    else
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -54,14 +56,14 @@ render() {
 type AppPropsType = MapStatePropsType & MapDispatchPropsType
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-    isAuth: state.auth.isAuth
+    initialized: state.app.initialized
 })
 type MapStatePropsType = {
-    isAuth: boolean
+    initialized: boolean
 }
 type MapDispatchPropsType = {
-    getAuthUserData: () => void
+    initializeApp: () => void
 }
 
 
-export default connect(mapStateToProps, {getAuthUserData})(App);
+export default connect(mapStateToProps, {initializeApp})(App);
