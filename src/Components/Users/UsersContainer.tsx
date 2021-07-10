@@ -15,7 +15,7 @@ import {
     getFollowingInProgress,
     getIsFetching,
     getPageSize,
-    getTotalUsersCount, getUsersPage
+    getTotalUsersCount, getUsersPage,
 } from "../../Redax/users-selectors";
 
 

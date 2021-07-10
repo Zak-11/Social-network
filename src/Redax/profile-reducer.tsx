@@ -58,7 +58,7 @@ export const profileReducer = (state = initialState, action: ProfileReducerActio
             }
             return {
                 ...state,
-                newPostText: " ",
+                newPostText: "",
                 posts: [...state.posts, newPost]
             }
 
@@ -99,8 +99,12 @@ export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
         dispatch(setUsersProfile(response.data))
     })
 }
+
+
+
 export const getStatus = (userId: string) => (dispatch: Dispatch) => {
-    profileAPI.getStatus(userId).then(response => {
+    profileAPI.getStatus(userId)
+        .then(response => {
         dispatch(setStatusAC(response.data))
     })
 }

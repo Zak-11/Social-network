@@ -221,9 +221,10 @@ export const follow = (userId: number) => {
         userAPI.follow(userId)
             .then(response => {
                 if (response.data.resultCode == 0) {
-                    dispatch(followSuccess(userId));
+                    dispatch(followSuccess(userId))
+                    dispatch(followingInProgressAC(false, userId))
                 }
-                dispatch(followingInProgressAC(false, userId))
+
             })
     }
 }
@@ -236,8 +237,10 @@ export const unfollow = (userId: number) => {
             .then(response => {
                 if (response.data.resultCode == 0) {
                     dispatch(followSuccess(userId));
+
+                    dispatch(followingInProgressAC(false, userId))
                 }
-                dispatch(followingInProgressAC(false, userId))
+
             })
     }
 }
