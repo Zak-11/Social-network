@@ -10,6 +10,13 @@ import {
 import {AppStateType} from "../../Redax/redux-store";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsersPage
+} from "../../Redax/users-selectors";
 
 
 
@@ -66,7 +73,7 @@ export class UsersContainer extends React.Component<UsersPropsType> {
 
 }
 
-
+/*
 const mapStateToProps = (state: AppStateType) => {
     return {
         usersPage: state.usersPage,
@@ -77,6 +84,20 @@ const mapStateToProps = (state: AppStateType) => {
         followingInProgress: state.usersPage.followingInProgress,
 
     }
+}*/
+const mapStateToProps = (state: AppStateType) => {
+    return {
+        usersPage: getUsersPage(state),
+        pageSize: getPageSize(state),
+        totalUsersCount:getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
+
+    }
+
+
+
 }
 
 export default compose<React.ComponentType>(

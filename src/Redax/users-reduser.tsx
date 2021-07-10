@@ -200,13 +200,13 @@ export const followingInProgressAC = (isFetching: boolean, userID: number): foll
 }
 
 
-export const getUsers = (currentPage: number, pageSize: number) => {
+export const getUsers = (page: number, pageSize: number) => {
 
     return (dispatch: Dispatch) => {
 
-        dispatch(isFetchingAC(true))
-
-        userAPI.getUsers(currentPage, pageSize).then(data => {
+         dispatch(isFetchingAC(true))
+         dispatch(setCurrentPage(page))
+        userAPI.getUsers(page, pageSize).then(data => {
             dispatch(isFetchingAC(false))
             dispatch(setUsers(data.items))
             dispatch(setTotalUsersCount(data.totalCount))
