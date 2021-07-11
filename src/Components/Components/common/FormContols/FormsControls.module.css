@@ -1,15 +1,181 @@
 .formControl {
 }
 
+.loginContainer{
+    flex-shrink: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 850px;
+    background: #fff;
+    box-shadow: 0 5px 30px rgb(0 0 0);
+    min-height: 450px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    animation-name: fadeInUp;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+}
+
+
+.leftCombo{
+    position: absolute;
+    width: 50%;
+    float: left;
+    background-image :url('https://bestvietnam.ru/wp-content/uploads/2020/11/%D0%BF%D0%B5%D0%BD%D1%81%D0%B8%D0%BE%D0%BD%D0%B5%D1%80.jpg' );
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    height: 100%;
+
+}
+.logo_carousel{
+
+
+
+
+}
+.logo_carousel_inner{
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+}
+.item_background{
+
+}
+.login_coll{
+    padding: 0;
+    margin-left: 50%;
+
+}
+.logoLeftCombo{
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    padding: 30px 40px;
+    font-family: "Roboto",sans-serif;
+    top: 0;
+
+}
+
+.login {
+    padding: 30px 40px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-weight: 500;
+    display: block;
+
+}
+
+
+.form{
+    position: relative;
+    margin: 15px 0;
+    font-family: "Roboto",sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+.label {
+    position: relative;
+    font-family: "Roboto",sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+.impute {
+    background-color: transparent;
+    box-shadow: rgb(60 66 87 ) 0px 0px 0px 1px, rgb(0 0 0 ) 0px 0px 0px 0px, rgb(0 0 0 )
+    0px 0px 0px 0px, rgb(0 0 0) 0px 1px 1px 0px, rgb(0 0 0 ) 0px 0px 0px 0px, rgb(0 0 0)
+    0px 0px 0px 0px, rgb(0 0 0)
+    0px 0px 0px 0px, rgb(0 0 0 ) 0px 0px 0px 0px, rgb(0 0 0 ) 0px 0px 0px 0px, rgb(0 0 0 ) 0px 0px 0px 0px;
+    border-radius: 4px;
+    transition: background-color 240ms, box-shadow 240ms;
+    color: #393d4a;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    padding: 8px;
+    width: 100%;
+    border: 0;
+}
+.forgot_password{
+    text-align: right;
+    margin: -7px 0 35px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+
+}
+
 .formControl.error input, .formControl.error textarea {
     border: 2px solid red;
 }
 
 .formControl.error span {
+    padding: 0 5px 5px 0;
+    font-size: 12px;
+    margin-bottom: 10px;
     color: darkred;
+    font-weight: 500;
+    font-family: Roboto,sans-serif;
 }
 .formSummaryError {
     border: 2px solid red;
     padding: 5px;
     color: darkred;
+}
+.login_batten {
+    margin: 20px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+.login_caller {
+    width: 100%;
+    line-height: 42px;
+    background: #a84849 !important;
+    color: #ffffff !important;
+    border-color: #a84849;
+    position: relative;
+    user-select: none;
+    outline: 0;
+
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    text-align: center;
+    min-width: 64px;
+
+    padding: 0 16px;
+    border-radius: 4px;
+    transform: translate3d(0,0,0);
+    transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    font-family: "Roboto",sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+@media (min-width: 992px){
+    .login_coll {
+        width: 50%;
+    }
+
 }
