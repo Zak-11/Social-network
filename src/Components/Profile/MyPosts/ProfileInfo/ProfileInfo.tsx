@@ -3,8 +3,27 @@ import classes from './ProfileInfo.module.css'
 import {Preloader} from "../../../Components/common/Preloader";
 import {ProfileStatus} from "./ProfileStatus";
 
+
+export type ProfileInfoType = {
+    aboutMe: string
+    contacts: {
+        facebook: string
+        github: string
+        instagram: string
+        vk: string
+    }
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    photos: {
+        large: string
+        small: string
+    }
+    userId: number
+}
+
 export type ProfileType = {
-    profile: any
+    profile:  ProfileInfoType | null
     status: string
     updateStatus: (status: string) => void
 }
@@ -18,16 +37,15 @@ export function ProfileInfo(props: ProfileType) {
         <div>
             <img src={`https://74foto.ru/wp-content/uploads/kak-krasivo-sfotografirovatsya-parnyu-na-avu_1.jpg`}/>
 
-            <div>
-                <img src={props.profile.photos.large}/>
+            <div className={classes.descriptionBlock}>
+                <img src={props.profile?.photos?.large} alt={'Logo'}/>
 
-            </div>
-            <div
-                className={classes.descriptionBlock}>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+
+                <ProfileStatus updateStatus={props.updateStatus}
+                               status={props.status}/>
+
             </div>
         </div>
-
 
     );
 

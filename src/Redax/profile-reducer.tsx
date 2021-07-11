@@ -1,4 +1,4 @@
-import {profileAPI, userAPI} from "../api/Api";
+import {profileAPI} from "../api/Api";
 import {Dispatch} from "redux";
 
 
@@ -58,7 +58,6 @@ export const profileReducer = (state = initialState, action: ProfileReducerActio
             }
             return {
                 ...state,
-                newPostText: "",
                 posts: [...state.posts, newPost]
             }
 
@@ -94,6 +93,48 @@ export const setStatusAC = (status: string): setStatusType => {
         status: status
     } as const
 }
+
+
+
+export const getUserProfile = (userId: string | undefined) => {
+    return (dispatch: Dispatch) => {
+        if (!userId) {
+            userId = '2'
+        }
+        profileAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUsersProfile(response.data))
+            });
+    }
+}
+
+export const getStatus = (userId: string) => (dispatch: Dispatch) => {
+    if (!userId) {
+        userId = '2'
+    }
+    profileAPI.getStatus(userId)
+        .then(response => {
+            dispatch(setStatusAC(response.data))
+        })
+}
+
+export const updateStatus = (status: string) => (dispatch: Dispatch) => {
+    profileAPI.updateStatus(status)
+        .then(response=> {
+            if (response.data.resultCode === 0) {
+                dispatch(setStatusAC(status))
+            }
+        })
+}
+
+
+
+
+
+
+
+
+/*
 export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
     userAPI.getProfile(userId).then(response => {
         dispatch(setUsersProfile(response.data))
@@ -118,6 +159,7 @@ export const updateStatus = (status: string) => (dispatch: Dispatch) => {
 
     })
 }
+*/
 
 
 

@@ -5,10 +5,6 @@ import {NavLink} from "react-router-dom";
 import {UserType} from "../../Redax/users-reduser";
 
 
-
-
-
-
 type UsersType = {
     follow: (userId: number) => void
     unfollow: (userId: number) => void
@@ -41,7 +37,8 @@ export let Users = (props: UsersType) => {
                 <span>
                     <div>
                         <NavLink to={'/profile/' + u.id}>
-                          <img alt={'There should be a photo here'} src={`${u.photos.small != null ? u.photos.small : userPhoto}`}
+                          <img alt={'There should be a photo here'}
+                               src={`${u.photos.small != null ? u.photos.small : userPhoto}`}
                                className={styles.userPhoto}/>
                             </NavLink>
                     </div>

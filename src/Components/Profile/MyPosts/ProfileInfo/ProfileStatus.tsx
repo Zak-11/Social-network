@@ -7,21 +7,18 @@ type ProfileStatusPropsType = {
 
 
 export class ProfileStatus extends React.Component<ProfileStatusPropsType, {}> {
-    //локальный стэйт классового компонента
+
     state = {
-        editMode: false, // переменная на отбражение/скрытие редактирования  стстуса
+        editMode: false,
         status: this.props.status,
     }
 
-//this.setState - метод React.Component, который вызывает изменение стэйта с  перерисовкой классового компонента
-// (как в хуке useState у функционального)
-    activateEditMode = () => {
-        this.setState({editMode: true});
-    }
 
     deactivateEditMode = () => {
-        this.setState({editMode: false});
-        this.props.updateStatus(this.state.status);
+        this.setState({
+            editMode: !this.state.editMode
+        });
+        this.props.updateStatus(this.state.status)
     }
     onStatusChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
@@ -37,7 +34,39 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, {}> {
         }
     }
 
+
     render() {
+        return <>
+            {!this.state.editMode &&
+            <div>
+                <span onDoubleClick={this. deactivateEditMode}>
+                my status : {this.props.status || 'no status'}
+            </span>
+            </div>
+            }
+            {this.state.editMode &&
+            <div>
+            <span>
+                <input
+                    onChange={this.onStatusChange}
+                    onBlur={this. deactivateEditMode} autoFocus value={this.state.status} type="text"/>
+            </span>
+            </div>
+            }
+
+        </>
+    }
+
+
+
+
+
+
+
+
+
+
+    /*render() {
         return (<>
             {this.state.editMode
                 ? <input
@@ -52,5 +81,5 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType, {}> {
                 </div>}
         </>);
     }
-
+*/
 }
