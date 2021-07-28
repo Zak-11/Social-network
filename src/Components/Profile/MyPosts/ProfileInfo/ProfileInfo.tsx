@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css'
 import {Preloader} from "../../../Components/common/Preloader";
-import {ProfileStatus} from "./ProfileStatus";
+
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 export type ProfileInfoType = {
@@ -41,7 +42,7 @@ export function ProfileInfo(props: ProfileType) {
                 <img src={props.profile?.photos?.large} alt={'Logo'}/>
 
 
-                <ProfileStatus updateStatus={props.updateStatus}
+                <ProfileStatusWithHooks updateStatus={props.updateStatus}
                                status={props.status}/>
 
             </div>
